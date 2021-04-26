@@ -1,0 +1,39 @@
+{
+    "Name": "Hero without name yet",
+    "Age": 21,
+    "Attributes": [
+        {
+            "Physical": {
+                "Strength": 1,
+                "Dexterity": 1,
+                "Stamina": 1
+            },
+            "Social": {
+                "Charisma": 1,
+                "Manipulation": 1,
+                "Composure": 1
+            },
+            "Mental": {
+                "Intelligence": 1,
+                "Wits": 1,
+                "Resolve": 1
+            }
+        }
+    ],
+    "Generator": {
+        "Attributes": {
+            "Physical": {
+                "Priority": "A",
+                "PointsSpent": 0
+            },
+            "Social": {
+                "Priority": "B",
+                "PointsSpent": 0
+            },
+            "Mental": {
+                "Priority": "C",
+                "PointsSpent": 0
+            }
+        }
+    }
+}
