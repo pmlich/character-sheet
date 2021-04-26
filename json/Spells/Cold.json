@@ -1,0 +1,26 @@
+{
+   "name":"Cold",
+   "description":"",
+   "powers": {
+      "1": {
+         "name":"Cooler",
+         "description":""
+      },
+      "2": {
+         "name":"Freeze",
+         "description":""
+      },
+      "3": {
+         "name":"Freezing missile",
+         "description":""
+      },
+      "4": {
+         "name":"Refrigerator",
+         "description":""
+      },
+      "5": {
+         "name":"Cold elemental",
+         "description":""
+      }
+   }
+}

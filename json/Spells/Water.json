@@ -1,0 +1,26 @@
+{
+   "name":"Water",
+   "description":"Water can be cosidered soft, but combined with lighting or freezing it is more deadly and powerful than others",
+   "powers": {
+      "1": {
+         "name":"Find water",
+         "description":"Those of water always know where to find it"
+      },
+      "2": {
+         "name":"Bucket / Water shield",
+         "description":"Bucket of water only for you which can be shaped to shield you"
+      },
+      "3": {
+         "name":"Water missile",
+         "description":"You can throw your bucket of water at anyone in sight"
+      },
+      "4": {
+         "name":"Swimming pool",
+         "description":"Your bucket is little larger"
+      },
+      "5": {
+         "name":"Water elemental",
+         "description":"Living water at your service, if you are worth, can flood whole villages, bring violent rains or tides. Allows you to change where water will flow."
+      }
+   }
+}

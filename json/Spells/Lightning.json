@@ -1,0 +1,26 @@
+{
+   "name":"Lightning",
+   "description":"",
+   "powers": {
+      "1": {
+         "name":"Bright look",
+         "description":""
+      },
+      "2": {
+         "name":"Torch",
+         "description":""
+      },
+      "3": {
+         "name":"Blind",
+         "description":""
+      },
+      "4": {
+         "name":"Sunny day",
+         "description":""
+      },
+      "5": {
+         "name":"Light elemental",
+         "description":""
+      }
+   }
+}

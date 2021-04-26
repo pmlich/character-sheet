@@ -1,0 +1,26 @@
+{
+   "name":"Nature",
+   "description":"",
+   "powers": {
+      "1": {
+         "name":"Flower for lady",
+         "description":""
+      },
+      "2": {
+         "name":"Growing touch / Wooden sword / Wooden shield",
+         "description":""
+      },
+      "3": {
+         "name":"Catching plant",
+         "description":""
+      },
+      "4": {
+         "name":"Wild nature hold",
+         "description":""
+      },
+      "5": {
+         "name":"Nature elemental",
+         "description":""
+      }
+   }
+}

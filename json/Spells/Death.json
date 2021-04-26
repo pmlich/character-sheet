@@ -1,0 +1,26 @@
+{
+   "name":"Death",
+   "description":"",
+   "powers": {
+      "1": {
+         "name":"Decay",
+         "description":""
+      },
+      "2": {
+         "name":"Touch of the death / Beyond shield",
+         "description":""
+      },
+      "3": {
+         "name":"Death ray",
+         "description":""
+      },
+      "4": {
+         "name":"Death & Decay",
+         "description":""
+      },
+      "5": {
+         "name":"Death elemental",
+         "description":""
+      }
+   }
+}

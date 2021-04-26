@@ -1,0 +1,26 @@
+{
+   "name":"Electricity",
+   "description":"",
+   "powers": {
+      "1": {
+         "name":"Sparkling snap",
+         "description":""
+      },
+      "2": {
+         "name":"Shocking touch / shield",
+         "description":""
+      },
+      "3": {
+         "name":"Lightning bolt",
+         "description":""
+      },
+      "4": {
+         "name":"Chain lighting / Lightning ball ",
+         "description":""
+      },
+      "5": {
+         "name":"Electricity elemental",
+         "description":""
+      }
+   }
+}

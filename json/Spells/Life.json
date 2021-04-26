@@ -1,0 +1,26 @@
+{
+   "name":"Life",
+   "description":"",
+   "powers": {
+      "1": {
+         "name":"Spark of life",
+         "description":""
+      },
+      "2": {
+         "name":"Healing touch / Life shield",
+         "description":""
+      },
+      "3": {
+         "name":"Healing sight",
+         "description":""
+      },
+      "4": {
+         "name":"Mass healing",
+         "description":""
+      },
+      "5": {
+         "name":"Life elemental",
+         "description":""
+      }
+   }
+}

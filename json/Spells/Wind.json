@@ -1,0 +1,26 @@
+{
+   "name":"Wind",
+   "description":"",
+   "powers": {
+      "1": {
+         "name":"Floating feather",
+         "description":""
+      },
+      "2": {
+         "name":"Knockback / Air shield",
+         "description":""
+      },
+      "3": {
+         "name":"Air fist",
+         "description":""
+      },
+      "4": {
+         "name":"Tornado",
+         "description":""
+      },
+      "5": {
+         "name":"Wind elemental",
+         "description":""
+      }
+   }
+}

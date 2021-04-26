@@ -1,0 +1,26 @@
+{
+   "name":"Shadow",
+   "description":"Caster can call power of shadows to his aid. He can ask shadow to hide something for him, he can make shadow dance and confuse others. He can ask mighty shadow to come, turn off lights and devour this world",
+   "powers": {
+      "1": {
+         "name":"Hide object",
+         "description":"Object can be hidden in palm while in plain view of other person"
+      },
+      "2": {
+         "name":"Touch of shadow / Shadow shield",
+         "description":"Invisibility while staying still or not speaking. Also ability to put thing/person into the shadow for touched person."
+      },
+      "3": {
+         "name":"Invisibility cloak / Shadow attack",
+         "description":"Person or object is not visible to others. Or shadows will come alive and attack mind and confuse one person."
+      },
+      "4": {
+         "name":"Mass invisibility",
+         "description":"Group of person or objects are not visible. Or mind of the group can be attacked."
+      },
+      "5": {
+         "name":"Shadow elemental",
+         "description":"Living shadows come to serve caster, if he's worth."
+      }
+   }
+}

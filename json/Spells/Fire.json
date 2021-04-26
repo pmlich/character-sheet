@@ -1,0 +1,26 @@
+{
+   "name":"Fire",
+   "description":"",
+   "powers": {
+      "1": {
+         "name":"Devils spit",
+         "description":""
+      },
+      "2": {
+         "name":"Scorch / Fire shield",
+         "description":""
+      },
+      "3": {
+         "name":"Fire bolt / Fire ball",
+         "description":""
+      },
+      "4": {
+         "name":"Fire wall",
+         "description":""
+      },
+      "5": {
+         "name":"Fire elemental",
+         "description":""
+      }
+   }
+}
