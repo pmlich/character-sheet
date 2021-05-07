@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="index.css">
+
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<body>
+<div id="chargen">
+    <h1>CharGen</h1>
+    <h2>Attributes</h2>
+    <div id="PhysicalAttributes" class="AttributeClass">
+    <h3>Physical</h3>
+    <table>
+        <attribute-item
+            v-for="item in PhysicalAttributes"
+            v-bind:attr="item"
+            v-bind:key="item.id">
+        </attribute-item>
+    </table>
+    </div>
+    <div id="SocialAttributes" class="AttributeClass">
+    <h3>Social</h3>
+    <table>
+        <attribute-item
+            v-for="item in SocialAttributes"
+            v-bind:attr="item"
+            v-bind:key="item.id">
+        </attribute-item>
+    </table>
+    </div>
+    <div id="MentalAttributes" class="AttributeClass">
+    <h3>Mental</h3>
+    <table>
+        <attribute-item
+            v-for="item in MentalAttributes"
+            v-bind:attr="item"
+            v-bind:key="item.id">
+        </attribute-item>
+    </table>
+    </div>
+
+</div>
+<script src="index.js"></script>
+</body>
+</html>
