@@ -7,7 +7,8 @@ Vue.component('attribute-item', {
         <td>
             <div class="circle" 
                 v-for="n in 5" 
-                v-bind:class="{full: n <= attr.value}">
+                v-bind:class="{full: n <= attr.value}"
+                v-on:click="attr.value=n">
             </div>
         </td>
     </tr>`
@@ -23,7 +24,7 @@ var app = new Vue({
         ],
         SocialAttributes: [
             { id: "Charisma", value: 1 },
-            { id: "Manipulation", value: 3 },
+            { id: "Manipulation", value: 1 },
             { id: "Composure", value: 1 }            
         ],
         MentalAttributes: [
