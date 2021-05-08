@@ -5,5 +5,19 @@ html, body {
 
 .AttributeClass {
     float: left;
-    padding: 10px;
+    padding: 1em;
+}
+
+.circle {
+    width: 0.9em;
+    height: 0.9em;
+    cursor: pointer;
+    background-color: aliceblue;
+    border: 0.1em solid lightgrey;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.full {
+    background-color: black;
 }

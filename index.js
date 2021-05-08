@@ -1,6 +1,16 @@
 Vue.component('attribute-item', {
     props: ['attr'],
-    template: '<tr><td>{{ attr.id }}</td><td>{{ attr.value }}</td></tr>'
+    template: `
+    <tr>
+        <td>{{ attr.id }}</td>
+        <td>{{ attr.value }}</td>
+        <td>
+            <div class="circle" 
+                v-for="n in 5" 
+                v-bind:class="{full: n <= attr.value}">
+            </div>
+        </td>
+    </tr>`
   })
 
 var app = new Vue({ 
@@ -13,7 +23,7 @@ var app = new Vue({
         ],
         SocialAttributes: [
             { id: "Charisma", value: 1 },
-            { id: "Manipulation", value: 1 },
+            { id: "Manipulation", value: 3 },
             { id: "Composure", value: 1 }            
         ],
         MentalAttributes: [
@@ -21,5 +31,6 @@ var app = new Vue({
             { id: "Wits", value: 1 },
             { id: "Resolve", value: 1 }            
         ],
+        test: 1
     }
 });
