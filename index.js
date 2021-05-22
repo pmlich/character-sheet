@@ -2,7 +2,7 @@ Vue.component('attribute-category', {
     props: ['category'],
     template: `
     <div class="AttributeClass">
-    <h3>{{ category.id }}</h3>
+    <h3>{{ category.id }} {{ category.sum }} of {{ category.allowed + 3}}</h3>
     <table>
         <tr is="attribute-item"
             v-for="item in category.list"
@@ -41,6 +41,8 @@ var app = new Vue({
                     { id: "Dexterity", value: 1 },
                     { id: "Stamina", value: 1 },
                 ],
+                sum: 3,
+                allowed: 5
             },
             {
                 id: "Social",                 
@@ -49,6 +51,8 @@ var app = new Vue({
                     { id: "Manipulation", value: 1 },
                     { id: "Composure", value: 1 }     
                 ],
+                sum: 3,
+                allowed: 4
             },
             {
                 id: "Mental",                 
@@ -57,6 +61,8 @@ var app = new Vue({
                     { id: "Wits", value: 1 },
                     { id: "Resolve", value: 1 } 
                 ],
+                sum: 3,
+                allowed: 5
             },            
         ],
     }
