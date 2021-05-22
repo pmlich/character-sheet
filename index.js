@@ -1,5 +1,14 @@
 Vue.component('attribute-category', {
     props: ['category'],
+    methods: {
+        recomputeSum: function() { 
+            newsum = 0
+            for(var i = 0; i < this.category.list.length; i++) {
+                newsum = newsum + this.category.list[i].value
+            }            
+            this.category.sum = newsum
+        }        
+    },
     template: `
     <div class="AttributeClass">
     <h3>{{ category.id }} {{ category.sum }} of {{ category.allowed + 3}}</h3>
@@ -8,6 +17,7 @@ Vue.component('attribute-category', {
             v-for="item in category.list"
             v-bind:attr="item"
             v-bind:key="item.id"
+            v-on:attrchanged="recomputeSum"
         ></tr>
     </table>
     </div>
@@ -24,7 +34,7 @@ Vue.component('attribute-item', {
             <div class="circle" 
                 v-for="n in 5" 
                 v-bind:class="{full: n <= attr.value}"
-                v-on:click="attr.value=n">
+                v-on:click="attr.value=n; $emit('attrchanged')">
             </div>
         </td>
     </tr>`
