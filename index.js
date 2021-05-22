@@ -1,3 +1,19 @@
+Vue.component('attribute-category', {
+    props: ['category'],
+    template: `
+    <div class="AttributeClass">
+    <h3>{{ category.id }}</h3>
+    <table>
+        <tr is="attribute-item"
+            v-for="item in category.list"
+            v-bind:attr="item"
+            v-bind:key="item.id"
+        ></tr>
+    </table>
+    </div>
+    `
+})
+
 Vue.component('attribute-item', {
     props: ['attr'],
     template: `
@@ -16,22 +32,32 @@ Vue.component('attribute-item', {
 
 var app = new Vue({ 
     el: '#chargen',
-    data: {
-        PhysicalAttributes: [
-            { id: "Strength", value: 1 },
-            { id: "Dexterity", value: 1 },
-            { id: "Stamina", value: 1 }
+    data: { 
+        Attributes: [
+            {
+                id: "Physical",                 
+                list: [
+                    { id: "Strength", value: 1 },
+                    { id: "Dexterity", value: 1 },
+                    { id: "Stamina", value: 1 },
+                ],
+            },
+            {
+                id: "Social",                 
+                list: [
+                    { id: "Charisma", value: 1 },
+                    { id: "Manipulation", value: 1 },
+                    { id: "Composure", value: 1 }     
+                ],
+            },
+            {
+                id: "Mental",                 
+                list: [
+                    { id: "Intelligence", value: 1 },
+                    { id: "Wits", value: 1 },
+                    { id: "Resolve", value: 1 } 
+                ],
+            },            
         ],
-        SocialAttributes: [
-            { id: "Charisma", value: 1 },
-            { id: "Manipulation", value: 1 },
-            { id: "Composure", value: 1 }            
-        ],
-        MentalAttributes: [
-            { id: "Intelligence", value: 1 },
-            { id: "Wits", value: 1 },
-            { id: "Resolve", value: 1 }            
-        ],
-        test: 1
     }
 });
