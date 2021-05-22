@@ -1,5 +1,10 @@
 Vue.component('attribute-category', {
     props: ['category'],
+    computed: {
+        tooMany: function() {
+            return this.category.sum > (this.category.allowed + 3)
+        }
+    },
     methods: {
         recomputeSum: function() { 
             newsum = 0
@@ -12,7 +17,11 @@ Vue.component('attribute-category', {
     },
     template: `
     <div class="AttributeClass">
-    <h3>{{ category.id }} {{ category.sum }} of {{ category.allowed + 3}}</h3>
+    <h3>{{ category.id }}
+    <span 
+        v-bind:class="{red: tooMany}"> 
+        {{ category.sum }}
+    </span> of {{ category.allowed + 3}}</h3>
     <table>
         <tr is="attribute-item"
             v-for="item in category.list"
