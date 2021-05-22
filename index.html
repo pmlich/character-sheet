@@ -17,6 +17,7 @@
             v-for="item in Attributes"
             v-bind:category="item"
             v-bind:key="item.id"
+            v-on:sumchanged="RecomputeAttributePriorities()"
         >
         </attribute-category>
     </div>

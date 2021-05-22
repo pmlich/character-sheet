@@ -7,6 +7,7 @@ Vue.component('attribute-category', {
                 newsum = newsum + this.category.list[i].value
             }            
             this.category.sum = newsum
+            this.$emit('sumchanged')
         }        
     },
     template: `
@@ -75,5 +76,35 @@ var app = new Vue({
                 allowed: 5
             },            
         ],
+    },
+    methods: {
+        RecomputeAttributePriorities: function() { 
+            /*
+             * We compute how many attribute points are allowed based on highest assigned points
+             * which will get most allowed points, other lower similarly
+             * algorithm uses AttrAllowed as a source of restrictions
+             * sorted AttrSums is used to recognize which Attribute category has most points assigned
+             * changed array is used to track which categories were already modified to avoid double assigments 
+             * and leaving other categories unchanged
+             */
+            AttrAllowed = [5,4,3]
+            AttrSums = [
+                app.Attributes[0].sum,
+                app.Attributes[1].sum,
+                app.Attributes[2].sum
+            ]            
+            AttrSums.sort(function(a,b) {return a-b}).reverse()
+            changed = []
+            while (AttrSums.length > 0) {
+                for (i=0; i < app.Attributes.length; i++) {
+                    if (app.Attributes[i].sum == AttrSums[0] && !(changed.includes(i))) {
+                        app.Attributes[i].allowed = AttrAllowed[0]
+                        AttrSums.shift()
+                        AttrAllowed.shift()
+                        changed.push(i)
+                    }
+                }
+            }  
+        }
     }
 });
