@@ -2,7 +2,7 @@ Vue.component('attribute-category', {
     props: ['category'],
     computed: {
         tooMany: function() {
-            return this.category.sum > (this.category.allowed + 3)
+            return this.category.sum > (this.category.allowed)
         }
     },
     methods: {
@@ -21,7 +21,7 @@ Vue.component('attribute-category', {
     <span 
         v-bind:class="{red: tooMany}"> 
         {{ category.sum }}
-    </span> of {{ category.allowed + 3}}</h3>
+    </span> of {{ category.allowed }}</h3>
     <table>
         <tr is="attribute-item"
             v-for="item in category.list"
@@ -62,7 +62,7 @@ var app = new Vue({
                     { id: "Stamina", value: 1 },
                 ],
                 sum: 3,
-                allowed: 5
+                allowed: 7
             },
             {
                 id: "Social",                 
@@ -72,7 +72,7 @@ var app = new Vue({
                     { id: "Composure", value: 1 }     
                 ],
                 sum: 3,
-                allowed: 4
+                allowed: 6
             },
             {
                 id: "Mental",                 
@@ -96,7 +96,7 @@ var app = new Vue({
              * changed array is used to track which categories were already modified to avoid double assigments 
              * and leaving other categories unchanged
              */
-            AttrAllowed = [5,4,3]
+            AttrAllowed = [7,6,5]
             AttrSums = [
                 app.Attributes[0].sum,
                 app.Attributes[1].sum,
