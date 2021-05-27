@@ -19,7 +19,7 @@ Vue.component('attribute-category', {
     <div class="AttributeClass">
     <h3>{{ category.id }}
     <span 
-        v-bind:class="{red: tooMany}"> 
+        v-bind:class="{textred: tooMany}"> 
         {{ category.sum }}
     </span> of {{ category.allowed }}</h3>
     <table>
@@ -43,7 +43,7 @@ Vue.component('attribute-item', {
         <td>
             <div class="circle" 
                 v-for="n in 5" 
-                v-bind:class="{full: n <= attr.value}"
+                v-bind:class="{circleBlack: n <= attr.value}"
                 v-on:click="attr.value=n; $emit('attrchanged')">
             </div>
         </td>
