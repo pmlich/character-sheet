@@ -7,7 +7,7 @@ Vue.component('attribute-category', {
     },
     methods: {
         recomputeSum: function() { 
-            newsum = 0
+            var newsum = 0
             for(var i = 0; i < this.category.list.length; i++) {
                 newsum = newsum + this.category.list[i].value
             }            
