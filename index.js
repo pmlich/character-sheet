@@ -96,14 +96,14 @@ var app = new Vue({
              * changed array is used to track which categories were already modified to avoid double assigments 
              * and leaving other categories unchanged
              */
-            AttrAllowed = [7,6,5]
-            AttrSums = [
+            var AttrAllowed = [7,6,5]
+            var AttrSums = [
                 app.Attributes[0].sum,
                 app.Attributes[1].sum,
                 app.Attributes[2].sum
             ]            
             AttrSums.sort(function(a,b) {return a-b}).reverse()
-            changed = []
+            var changed = []
             while (AttrSums.length > 0) {
                 for (i=0; i < app.Attributes.length; i++) {
                     if (app.Attributes[i].sum == AttrSums[0] && !(changed.includes(i))) {
