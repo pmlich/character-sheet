@@ -3,9 +3,21 @@ html, body {
     padding: 0;
 }
 
-h2 {margin:0;}
-h3 {margin:0;}
-.clear {clear:both; float:none;}
+h1 {
+    margin:0;
+}
+
+h2 {
+    margin:0;
+}
+
+h3 {
+    margin:0;
+}
+
+.clear {
+    clear:both; float:none;
+}
 
 .AttributeClass {
     float: left;
@@ -30,11 +42,11 @@ h3 {margin:0;}
 }
 
 .circleGreen {
-	background: green linear-gradient(-30deg, #ddffdd, green);
+	background: lightgray linear-gradient(-30deg, #eee, lightgray);
 }
 
 .circleRed {
-	background: red linear-gradient(-30deg, #ffdddd, red);
+	background: lightgray linear-gradient(-30deg, #eee, lightgray);
 }
 
 .textred {
