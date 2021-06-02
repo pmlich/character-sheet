@@ -1,8 +1,7 @@
-//var global = {};
 var characters_list = {
 	0: {
 	"info": {
-		"info": {
+		"Basic informations": {
 			"Name": "Peter",
 			"Age": 11,
 			"Description": ""
@@ -32,7 +31,7 @@ var characters_list = {
 	},
 	1: {
 	"info": {
-		"info": {
+		"Basic informations": {
 			"Name": "Lubo",
 			"Age": 22,
 			"Description": ""
@@ -66,7 +65,7 @@ var characters_list = {
 var config =  {
 "blank": {
 	"info": {
-		"info": {
+		"Basic informations": {
 			"Name": " --- BLANK --- ",
 			"Age": "",
 			"Description": ""
@@ -98,67 +97,80 @@ var config =  {
 		"Physical":
 			{
 			"Athletics": 0,
-			"Melee": 0,
-			"Larceny": 0,
-			"Shooting": 0,
-			"Casting": 0,
-			"Riding": 0,
-			"Flying": 0,
-			"Brewing": 0,
-			"Stealth": 0,
-			"Survival1": 0,
 			"Brawl": 0,
-			"Survival2": 0
+			"Drive": 0,
+			"Firearms": 0,
+			"Larceny": 0,
+			"Stealth": 0,
+			"Survival": 0,
+			"Weaponry": 0
 			},
+		"Mental":
+			{
+			"Academics": 0,
+			"Computer": 0,
+			"Crafts": 0,
+			"Investigation": 0,
+			"Medicine": 0,
+			"Occult": 0,
+			"Politics": 0,
+			"Science": 0
+		        },
 		"Social":
 			{
+			"Animal Ken": 0,
 			"Empathy": 0,
+			"Expression": 0,
 			"Intimidation": 0,
 			"Persuasion": 0,
-			"Subterfuge": 0,
-			"Animal Ken": 0,
-			"Expression": 0,
-			"Etiquette": 0
+			"Socialize": 0,
+			"Streetwise": 0,
+			"Subterfuge": 0
 			},
-		"Mental":
-			{
-			"Awareness": 0,
-			"Investigation": 0,
-			"Ancient Runes": 0,
-			"Herbology": 0,
-			"Magic Theory": 0,
-			"Potions": 0,
-			"Magical Creatures": 0,
-			"Crafts": 0
-		        }
 		},
-	"spells":
+	"disciplines":
 		{
-		"Physical":
+		"Clans":
 			{
-			"push": 0,
-			"shield": 0,
-			"rope": 0,
-			"disarm": 0,
-			"magic arm": 0
+			"Banu Haqim": 0,
+			"Brujah": 0,
+			"Gangrel": 0,
+			"Hecata": 0,
+			"Lasombra": 0,
+			"Malkavian": 0,
+			"Nosferatu": 0,
+			"The Ministry": 0,
+			"Ravnos": 0,
+			"Salubri": 0,
+			"Toreador": 0,
+			"Tremere": 0,
+			"Tzimisce": 0,
+			"Ventrue": 0
 			},
-		"Social":
+		"Base Disciplines":
 			{
-			"charm": 0,
-			"intimidate": 0,
-			"social defense charm": 0
+			"Animalism": 0,
+			"Auspex": 0,
+			"Celerity": 0,
+			"Dominate": 0,
+			"Fortitude": 0,
+			"Obfuscate": 0,
+			"Oblivion": 0,
+			"Potence": 0,
+			"Presence": 0,
+			"Protean": 0,
+			"Presence": 0,
+			"Blood Sorcery": 0,
+			"Thin-Blood Alchemy ": 0
 			},
-		"Mental":
+		"Classic Amalgam Disciplines":
 			{
-			"examine magic": 0,
-			"mind defense": 0,
-			"mind attack": 0
-		        },
-		"Elemental":
-			{
-			"fire bolt": 0,
-			"lightning": 0,
-			"freeze": 0
+			"Chimerstry": 0,
+			"Dementation": 0,
+			"Obeah": 0,
+			"Serpentis": 0,
+			"Valeren": 0,
+			"Vicissitude": 0
 		        }
 		}
 	}
