@@ -4,51 +4,22 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" href="index.css">
+<title>Vampire character generator</title>
 <body>
 
 <main id="chargen">
 
-    <h1>CharGen</h1>
-
-    <div id="Info" class="clear">
-        <h2>Info</h2>
-        <div is="info-category"
-	     v-for="(item, index) in form.info"
-             v-bind:group_id="'info'"
-             v-bind:category="item"
-             v-bind:category_index="index"
-	></div>
-    </div>
-<!--             v-bind:key="item.id"-->
+    <h1>Vampire character generator</h1>
 
     <div id="Attributes" class="clear">
         <h2>Attributes</h2>
         <div is="attribute-category"
-	     v-for="(item, index) in form.attributes"
+	     v-for="(item, index) in Attributes"
              v-bind:category="item"
              v-on:sumchanged="RecomputeAttributePriorities()"
 	></div>    
 
     </div>
-
-    <div id="skills" class="clear">
-        <h2>Skills</h2>
-        <div is="attribute-category"
-	     v-for="(item, index) in form.skills"
-             v-bind:category="item"
-             v-on:sumchanged="RecomputeAttributePriorities()"
-	></div>    
-    </div>
-
-    <div id="spells" class="clear">
-        <h2>Spells</h2>
-        <div is="attribute-category"
-	     v-for="(item, index) in form.spells"
-             v-bind:category="item"
-             v-on:sumchanged="RecomputeAttributePriorities()"
-	></div>    
-    </div>
-
 
 </main>
 
