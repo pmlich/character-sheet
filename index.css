@@ -1,0 +1,27 @@
+html, body {
+    margin: 5px;
+    padding: 0;
+}
+
+.AttributeClass {
+    float: left;
+    padding: 1em;
+}
+
+.circle {
+    width: 0.9em;
+    height: 0.9em;
+    cursor: pointer;
+    background-color: aliceblue;
+    border: 0.1em solid lightgrey;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.circleBlack {
+    background-color: black;
+}
+
+.textred {
+    color: red;
+}

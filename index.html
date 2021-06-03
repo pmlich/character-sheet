@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="index.css">
+
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<body>
+<main id="chargen">
+    <h1>CharGen</h1>
+    <div>
+        <h2>Attributes</h2>
+        <attribute-category 
+            v-for="item in Attributes"
+            v-bind:category="item"
+            v-bind:key="item.id"
+            v-on:sumchanged="RecomputeAttributePriorities()"
+        >
+        </attribute-category>
+    </div>
+</main>
+<script src="index.js"></script>
+</body>
+</html>
