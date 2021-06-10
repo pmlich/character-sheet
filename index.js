@@ -1,3 +1,8 @@
+function isExist(ref) {
+    // function to check if object already exists
+    return typeof ref != 'undefined' && ref != null
+}
+
 Vue.component('attribute-category', {
     props: ['category'],
     computed: {
@@ -36,56 +41,86 @@ Vue.component('attribute-category', {
 
 Vue.component('attribute-item', {
     props: ['attr'],
+    data: {
+	    hover: -1 
+    },
+    methods: {
+        setAttrValue: function(attr, index) {
+            // when we click on already added value, it will retract one, but attr value cannot be 0
+            attr.value = (attr.value==index && attr.value>1) ? index-1 : index
+        },
+        setClass: function(value, index, hover) { 
+            // TODO have circleGray instead of circleGreen and circleRed
+            return {
+	            'circle'     : true,
+	            'circleBlack': index<=value,
+	            'circleGreen': hover>=0 && hover >value && index>value  && index<=hover,
+	            'circleRed'  : hover>=0 && hover<=value && index>=hover && index<=value
+            } 
+        },
+        mouseOver: function(event) {
+            // TODO check if there is vue way to do this
+	        this.hover = event.target.attributes.index.value * 1
+	        this.$forceUpdate()
+        },
+        mouseOut: function(event) {
+            this.hover = -1
+	    this.$forceUpdate()
+        }
+    },
     template: `
     <tr>
         <td>{{ attr.id }}</td>
         <td>{{ attr.value }}</td>
         <td>
-            <div class="circle" 
-                v-for="n in 5" 
-                v-bind:class="{circleBlack: n <= attr.value}"
-                v-on:click="attr.value=n; $emit('attrchanged')">
-            </div>
+            <div v-for="n in 5" 
+                v-bind:index="n"
+                v-bind:class="setClass(attr.value, n, hover)"
+                v-on:click="setAttrValue(attr, n); $emit('attrchanged')"
+                v-on:mouseover="mouseOver"
+                v-on:mouseout="mouseOut"
+            ></div>
         </td>
     </tr>`
   })
 
 var app = new Vue({ 
     el: '#chargen',
-    data: { 
-        Attributes: [
-            {
-                id: "Physical",                 
-                list: [
-                    { id: "Strength", value: 1 },
-                    { id: "Dexterity", value: 1 },
-                    { id: "Stamina", value: 1 },
-                ],
-                sum: 3,
-                allowed: 7
-            },
-            {
-                id: "Social",                 
-                list: [
-                    { id: "Charisma", value: 1 },
-                    { id: "Manipulation", value: 1 },
-                    { id: "Composure", value: 1 }     
-                ],
-                sum: 3,
-                allowed: 6
-            },
-            {
-                id: "Mental",                 
-                list: [
-                    { id: "Intelligence", value: 1 },
-                    { id: "Wits", value: 1 },
-                    { id: "Resolve", value: 1 } 
-                ],
-                sum: 3,
-                allowed: 5
-            },            
-        ],
+    data: {
+            Attributes: [
+                {
+                    id: "Physical",                 
+                    list: [
+                        { id: "Strength", value: 1, value_range:[1,5] },
+                        { id: "Dexterity", value: 1, value_range:[1,5] },
+                        { id: "Stamina", value: 1, value_range:[1,5] },
+                    ],
+                    sum: 3,
+                    allowed: 7
+                },
+                {
+                    id: "Social",                 
+                    list: [
+                        { id: "Charisma", value: 1 },
+                        { id: "Manipulation", value: 1 },
+                        { id: "Composure", value: 1 }     
+                    ],
+                    sum: 3,
+                    allowed: 6
+                },
+                {
+                    id: "Mental",                 
+                    list: [
+                        { id: "Intelligence", value: 1 },
+                        { id: "Wits", value: 1 },
+                        { id: "Resolve", value: 1 } 
+                    ],
+                    sum: 3,
+                    allowed: 5
+                },            
+            ]
     },
+
     methods: {
         RecomputeAttributePriorities: function() { 
             /*
@@ -105,7 +140,7 @@ var app = new Vue({
             AttrSums.sort(function(a,b) {return a-b}).reverse()
             var changed = []
             while (AttrSums.length > 0) {
-                for (i=0; i < app.Attributes.length; i++) {
+                for (var i=0; i < app.Attributes.length; i++) {
                     if (app.Attributes[i].sum == AttrSums[0] && !(changed.includes(i))) {
                         app.Attributes[i].allowed = AttrAllowed[0]
                         AttrSums.shift()
@@ -115,5 +150,6 @@ var app = new Vue({
                 }
             }  
         }
+
     }
 });
