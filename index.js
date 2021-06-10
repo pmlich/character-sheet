@@ -1,4 +1,7 @@
-const isExist = (ref) => typeof ref != 'undefined' && ref!=null;
+function isExist(ref) {
+    // function to check if object already exists
+    return typeof ref != 'undefined' && ref != null
+}
 
 Vue.component('attribute-category', {
     props: ['category'],
@@ -38,26 +41,27 @@ Vue.component('attribute-category', {
 
 Vue.component('attribute-item', {
     props: ['attr'],
-    data: function() { return {
-	hover: -1
-    } },
+    data: {
+	    hover: -1 
+    },
     methods: {
         setAttrValue: function(attr, index) {
-            attr.value = attr.value==index ? index-1 : index
-            if (isExist(attr.value_range))
-                {
-                attr.value = attr.value<attr.value_range[0] ? attr.value_range[0] : attr.value>attr.value_range[1] ? attr.value_range[1] : attr.value
-                }
+            // when we click on already added value, it will retract one, but attr value cannot be 0
+            attr.value = (attr.value==index && attr.value>1) ? index-1 : index
         },
-        setClass: function(value, index, hover) { return {
-	    'circle'     : true,
-	    'circleBlack': index<=value,
-	    'circleGreen': hover>=0 && hover >value && index>value  && index<=hover,
-	    'circleRed'  : hover>=0 && hover<=value && index>=hover && index<=value
-        } },
+        setClass: function(value, index, hover) { 
+            // TODO have circleGray instead of circleGreen and circleRed
+            return {
+	            'circle'     : true,
+	            'circleBlack': index<=value,
+	            'circleGreen': hover>=0 && hover >value && index>value  && index<=hover,
+	            'circleRed'  : hover>=0 && hover<=value && index>=hover && index<=value
+            } 
+        },
         mouseOver: function(event) {
-	    this.hover = event.target.attributes.index.value * 1
-	    this.$forceUpdate()
+            // TODO check if there is vue way to do this
+	        this.hover = event.target.attributes.index.value * 1
+	        this.$forceUpdate()
         },
         mouseOut: function(event) {
             this.hover = -1
