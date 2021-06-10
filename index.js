@@ -86,9 +86,7 @@ Vue.component('attribute-item', {
 
 var app = new Vue({ 
     el: '#chargen',
-    data: function() {
-        var data = {
-            props: {},
+    data: {
             Attributes: [
                 {
                     id: "Physical",                 
@@ -121,13 +119,9 @@ var app = new Vue({
                     allowed: 5
                 },            
             ]
-        }
-	data.props = config; // load from config (global variable in file 'app-data.js')
-    return data;
     },
 
     methods: {
-
         RecomputeAttributePriorities: function() { 
             /*
              * We compute how many attribute points are allowed based on highest assigned points
