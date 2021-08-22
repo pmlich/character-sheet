@@ -32,7 +32,7 @@ div.statList {
   padding: 10px;
 }
 
-div.statSection {
+.statSection, .char-info{
 
   width: 800px;
 }
@@ -84,6 +84,10 @@ div.statSection {
   content: " ________________"
 }
 
+.stat:hover > .statName{
+  color: #ff0000
+}
+
 .statResource {
   margin: auto;
   width: 480px;
@@ -106,4 +110,24 @@ div.statSection {
 
 .resourcePoints.highlight:after {
   content: "!"
+}
+input{
+  border:none;
+}
+input.heading1{
+  display:block;
+  font-family:Serif;
+  font-size: 2em;
+  font-weight: bolder;
+  width: 100%;
+}
+input:hover{
+  background-color: #dddddd;
+}
+select{
+  border: none;
+}
+select:hover{
+  background-color: #dddddd;
+  cursor: pointer;
 }
