@@ -1,18 +1,19 @@
-<!--
- Displays entire section of disciplines
- receives events from child component and check if change is possible in resources
- if changes are possible, emit event to top component to make changes, otherwise don't
- -->
-
-<script>
+<script setup>
+/**
+ * Displays entire section of disciplines
+ * receives events from child component and check if change is possible in resources
+ * if changes are possible, emit event to top component to make changes, otherwise don't
+ */
 import { statSectionMixin } from "./mixins/statSectionMixin";
 import Stat from "./Stat.vue";
 import RestrictionState from "./RestrictionState.vue";
+</script>
 
+<script>
 export default {
   mixins: [statSectionMixin],
-  components: { stat: Stat, restrictionState: RestrictionState },
   props: ["clan"],
+  emits: ["statSectionHover"],
   computed: {
     /**
      * @returns {Array} of numbers describing how many points are currently assigned
@@ -48,17 +49,17 @@ export default {
 <template>
   <div class="statSection">
     <h2>{{ stats.id }}</h2>
-    <restrictionState
+    <RestrictionState
       class="resourceCount"
       :allocatedResources="allocatedResources"
       :resourceRestrictions="stats.resource"
     >
-    </restrictionState>
+    </RestrictionState>
     <div class="statList">
       <h2>Primary</h2>
       <ul class="ulStats">
         <li v-for="item in stats.data" :key="item.id">
-          <stat
+          <Stat
             v-show="isPrimary(item)"
             :stat="item"
             :scale="stats.resource.length - 1"
@@ -74,7 +75,7 @@ export default {
             "
             @stat-hover-end="$emit('statSectionHover', null)"
           >
-          </stat>
+          </Stat>
         </li>
       </ul>
     </div>

@@ -1,9 +1,9 @@
-<!--
-  displays clickable point representing number depending on scale and stat value
-  after click, change is emitted to parent component to decide if it is alright
- -->
-
 <script>
+/**
+ * displays clickable point representing number depending on scale and stat value
+ * after click, change is emitted to parent component to decide if it is alright
+ * also when we hover over the stat, we emit additional event to notify help change
+ */
 export default {
   name: "stat",
   props: ["stat", "scale"],

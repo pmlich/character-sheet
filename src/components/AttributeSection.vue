@@ -1,30 +1,32 @@
-<!--
-  Displays entire section of attributes
- receives events from child component and check if change is possible in resources
- if changes are possible, emit event to top component to make changes, otherwise don't
- -->
-
-<script>
+<script setup>
+/**
+ * Displays entire section of attributes
+ * receives events from child component and check if change is possible in resources
+ * if changes are possible, emit event to top component to make changes, otherwise don't
+ */
 import { statSectionMixin } from "./mixins/statSectionMixin";
 import { attributesAndSkillsMixin } from "./mixins/attributesAndSkillsMixin";
 import Stat from "./Stat.vue";
 import RestrictionState from "./RestrictionState.vue";
 
+</script>
+
+<script>
 export default {
   mixins: [statSectionMixin, attributesAndSkillsMixin],
-  components: { stat: Stat, restrictionState: RestrictionState },
+  emits: ['stat']
 };
 </script>
 
 <template>
   <div class="statSection">
     <h2>{{ stats.id }}</h2>
-    <restrictionState
+    <RestrictionState
       class="resourceCount"
       :allocatedResources="allocatedResources"
       :resourceRestrictions="stats.resource"
     >
-    </restrictionState>
+    </RestrictionState>
     <div
       v-for="category in stats.data"
       :key="category.id"
@@ -35,7 +37,7 @@ export default {
       <h2>{{ category.id }}</h2>
       <ul class="ulStats">
         <li v-for="item in category.list" :key="item.id">
-          <stat
+          <Stat
             :stat="item"
             :scale="stats.resource.length - 1"
             @stat-change="emitAllowedChange($event)"
@@ -48,7 +50,7 @@ export default {
             "
             @stat-hover-end="$emit('statSectionHover', { category: category })"
           >
-          </stat>
+          </Stat>
         </li>
       </ul>
     </div>
