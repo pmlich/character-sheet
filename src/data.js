@@ -803,3 +803,41 @@ export const disciplines = {
     },
   ],
 };
+export const vitals = [
+  {
+    id: "Health",
+    style: "healthPt",
+    scale: 15,
+    //TODO should contain sth like> depends: ['stamina'],
+    defaultModifier: 3,
+    description:"Your Health; usually equals stamina + 3",
+  },
+  {
+    id: "Willpower",
+    style: "willPt",
+    scale: 15,
+    //TODO should contain sth like> depends: ['composure', 'resolve'],
+    description:"Your Willpower; usually equals composure + resolve",
+  },
+  {
+    id: "Humanity",
+    style: "humanityPt",
+    scale: 10,
+    value: 7, 
+    description:"Your Humanity, a measure of resistance against the beast",
+  },
+  {
+    id: "Hunger",
+    style: "hungerPt",
+    scale: 5,
+    value: 1,
+    description:"Your Hunger",
+  },
+  {
+    id: "Blood Potency",
+    style: "point",
+    scale: 10,
+    //TODO should contain sth like> depends: ['generation.bloodPotency'],
+    description:"Your Blood Potency: a measure of Caine's blood in Your character",
+    },
+];

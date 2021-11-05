@@ -4,17 +4,23 @@ import AttributeSection from "./components/AttributeSection.vue";
 import SkillSection from "./components/SkillSection.vue";
 import DisciplineSection from "./components/DisciplineSection.vue";
 import HoverWindow from "./components/HoverWindow.vue";
-import { biography, skillDistributions, clans, attributes, skills, disciplines } from "./data.js";
+import VitalsSideBar from './components/VitalsSideBar.vue'
+import { biography, skillDistributions, clans, attributes, skills, disciplines, vitals, } from "./data.js";
 
 export default {
   data() {
     return {
+      
+      // load externals
       biography: biography,
       skills: skills,
       skillDistributions: skillDistributions,
       attributes: attributes,
       clans: clans,
       disciplines: disciplines,
+      vitals:vitals,
+
+      //local states
       mouseOverData: null,
     };
   },
@@ -24,23 +30,37 @@ export default {
     "discipline-section": DisciplineSection,
     "attribute-section": AttributeSection,
     "character-info": CharacterInfo,
+    "vitals-sidebar": VitalsSideBar
+  },
+  methods:{
+    setDataValue(event){
+      event[0].value = event[1];      
+    },
   },
 };
 </script>
 
 <template>
+  <vitals-sidebar
+    :vitals="vitals"
+    :stamina="attributes.data[0].list[2].value"
+    :composure="attributes.data[1].list[2].value"
+    :resolve="attributes.data[2].list[2].value"
+    :bloodPotency="(biography.generation) ? biography.generation.bloodPotency : null"
+    @hover="mouseOverData = $event">
+  </vitals-sidebar>
   <div class="sheet">
     <character-info :bio="biography" :clans="clans"> </character-info>
     <attribute-section
       :stats="attributes"
-      @stat-section-change="$event[0].value = $event[1]"
+      @stat-section-change="setDataValue($event)"
       @stat-section-hover="mouseOverData = $event"
     >
     </attribute-section>
     <skill-section
       :stats="skills"
       :distributions="skillDistributions"
-      @stat-section-change="$event[0].value = $event[1]"
+      @stat-section-change="setDataValue($event)"
       @stat-section-hover="mouseOverData = $event"
     >
     </skill-section>
@@ -48,7 +68,7 @@ export default {
       v-if="biography.clan"
       :stats="disciplines"
       :clan="biography.clan"
-      @stat-section-change="$event[0].value = $event[1]"
+      @stat-section-change="setDataValue($event)"
       @stat-section-hover="mouseOverData = $event"
     >
     </discipline-section>
@@ -70,11 +90,11 @@ export default {
   cursor: pointer;
 }
 
-.init {
+.point.init {
   background: radial-gradient(#ff6666, #660000);
 }
 
-.fill {
+.point.fill {
   background: radial-gradient(#ff6666, #cc0000);
 }
 
@@ -85,9 +105,7 @@ h2 {
 h3 {
   text-align: center;
 }
-.statSection {
-  width: 800px;
-}
+
 div.statList {
   width: 240px;
   float: left;
@@ -99,8 +117,8 @@ div.statList {
   margin: 0;
   padding: 0;
 }
-
 div.sheet {
   float: left;
+  width: 800px;
 }
 </style>
