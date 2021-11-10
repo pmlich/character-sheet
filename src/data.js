@@ -803,6 +803,7 @@ export const disciplines = {
     },
   ],
 };
+
 export const vitals = [
   {
     id: "Health",
@@ -840,4 +841,80 @@ export const vitals = [
     //TODO should contain sth like> depends: ['generation.bloodPotency'],
     description:"Your Blood Potency: a measure of Caine's blood in Your character",
     },
+];
+
+export const generations = [
+  {
+    id: "16th",
+    bloodPotencyMin: 0,
+    bloodPotencyMax: 0,
+  },
+  {
+    id: "15th",
+    bloodPotencyMin: 0,
+    bloodPotencyMax: 0,
+  },
+  {
+    id: "14th",
+    bloodPotencyMin: 0,
+    bloodPotencyMax: 0,
+  },
+  {
+    id: "13th",
+    bloodPotencyMin: 1,
+    bloodPotencyMax: 3,
+  },
+  {
+    id: "12th",
+    bloodPotencyMin: 1,
+    bloodPotencyMax: 3,
+  },    
+  {
+    id: "11th",
+    bloodPotencyMin: 1,
+    bloodPotencyMax: 4,
+    startingBloodPotency: 2
+  },  
+  {
+    id: "10th",
+    bloodPotencyMin: 1,
+    bloodPotencyMax: 4,
+    startingBloodPotency: 2
+  },  
+  {
+    id: "9th",
+    bloodPotencyMin: 2,
+    bloodPotencyMax: 5,
+    NPCOnly: true
+  },  
+  {
+    id: "8th",
+    bloodPotencyMin: 2,
+    bloodPotencyMax: 6,
+    NPCOnly: true
+  },
+  {
+    id: "7th",
+    bloodPotencyMin: 3,
+    bloodPotencyMax: 7,
+    NPCOnly: true
+  },
+  {
+    id: "6th",
+    bloodPotencyMin: 3,
+    bloodPotencyMax: 8,
+    NPCOnly: true
+  },
+  {
+    id: "5th",
+    bloodPotencyMin: 4,
+    bloodPotencyMax: 9,
+    NPCOnly: true
+  },
+  {
+    id: "4th",
+    bloodPotencyMin: 5,
+    bloodPotencyMax: 10,
+    NPCOnly: true
+  },
 ];
