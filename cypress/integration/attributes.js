@@ -2,21 +2,24 @@ const AttributeList = ["Strength","Dexterity", "Stamina", "Charisma", "Manipulat
 const lvl3Attrs = ["Dexterity", "Stamina", "Charisma"]
 const lvl2Attrs = ["Manipulation", "Composure", "Intelligence", "Wits"]    
 
-function checkNumberOfDots(Item, Expected) {
-    var ExpectedResults = []
-    for (var i = 0; i < 5; i++) {
-        if (i<Expected) {
-            ExpectedResults.push('have.class')
+function checkNumberOfPoints(Item, ExpectedInit, ExpectedFill, Scale) {
+    var CurrentChild = cy.contains(Item).next().children().first()
+    for (var i=1; i <= Scale; i++) {        
+        if (i != 1) {
+            CurrentChild = CurrentChild.next().first()
+        }
+        if (i <= ExpectedFill) {
+            CurrentChild.should('have.class', (i <= ExpectedInit) ? 'init' : 'fill')
         }
         else {
-            ExpectedResults.push('not.have.class')        
-        }     
+            CurrentChild.should('not.have.class', 'fill')
+            CurrentChild.should('not.have.class', 'init')      
+        }        
     }
-    cy.contains(Item).next().children().last().should(ExpectedResults[4], 'fill')
-    cy.contains(Item).next().children().next().next().next().should(ExpectedResults[3], 'fill')
-    cy.contains(Item).next().children().next().next().should(ExpectedResults[2], 'fill')        
-    cy.contains(Item).next().children().next().should(ExpectedResults[1], 'fill')
-    cy.contains(Item).next().children().first().should(ExpectedResults[0], 'init')
+}
+
+function checkNumberOfDots(Item, Expected) {
+    checkNumberOfPoints(Item, 1, Expected, 5)
 }
 
 describe('Attributes test', () => {
