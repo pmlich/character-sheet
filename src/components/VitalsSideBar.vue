@@ -15,14 +15,24 @@ export default {
     stamina: Number,
     composure: Number,
     resolve: Number,
-    bloodPotency: {
-       type: Number,
-       default: 0,
-    }
+    generation: String,        
   },
   emits: ['hover'],
   components: {
     'vital-stat': VitalStat,
+  },
+  data() {
+    return {
+      BloodPGensTable: {
+        "16th": 0,
+        "15th": 0,
+        "14th": 0,
+        "13th": 1,
+        "12th": 1,
+        "11th": 2,
+        "10th": 2,
+      }
+    }
   },
   computed: {
     /** Computes values of attributes to send to vital stat component 
@@ -34,7 +44,7 @@ export default {
       valueArray['Willpower'] = this.resolve + this.composure;
       valueArray['Humanity'] = 0;
       valueArray['Hunger'] = 0;
-      valueArray['Blood Potency'] = this.bloodPotency;// bloodPotency.value
+      valueArray['Blood Potency'] = this.BloodPGensTable[this.generation]
       return valueArray;
     },
   },
