@@ -33,7 +33,10 @@ export default {
 </script>
 
 <template>
-  <div class="statSection" id="disciplines">
+  <div 
+    class="statSection" 
+    id="disciplines"
+    @click="$emit('statHelp', { category: stats })">
     <h2>{{ stats.id }}</h2>
     <RestrictionState
       class="resourceCount"
@@ -50,16 +53,12 @@ export default {
             :stat="item"
             :scale="stats.resource.length - 1"
             @stat-change="emitAllowedChange($event)"
-            @stat-hover-start="
-              $emit('statSectionHover', {
+            @stat-click="
+              $emit('statHelp', {
                 stat: $event.stat,
-                hoverPointer: $event.hoverPointer,
-                category: 'Primary',
-                section: stats.id,
                 resource: stats.resource,
               })
-            "
-            @stat-hover-end="$emit('statSectionHover', null)"
+            "            
           >
           </Stat>
         </li>
@@ -74,17 +73,12 @@ export default {
             :stat="item"
             :scale="stats.resource.length - 1"
             @stat-change="selectedClan == 'Caitiff' || $event[2] ? emitAllowedChange($event) : ''"
-            @stat-hover-start="
-              $emit('statSectionHover', {
+            @stat-click="
+              $emit('statHelp', {
                 stat: $event.stat,
-                hoverPointer: $event.hoverPointer,
-                category: 'Secondary',
-                section: stats.id,
                 resource: stats.resource,
-                isCaitiff: selectedClan == 'Caitiff',
               })
             "
-            @stat-hover-end="$emit('statSectionHover', null)"
           >
           </stat>
         </li>
