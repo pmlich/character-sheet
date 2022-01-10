@@ -1,15 +1,16 @@
 <script setup>
-/**
- * Displays select allowing to choose discipline
- * And dots allowing change of number of dots in discipline
- * and display selects with abilities
- */
 import { disciplinesDefinition } from '../data.js';
 import Dots from './Dots.vue';
 </script>
 
 <script>
+/**
+ * Displays select allowing to choose discipline
+ * And dots allowing change of number of dots in discipline
+ * and display selects with abilities
+ */
 export default {
+  components: [Dots],
   props: ['discipline', 'disciplines', 'clan', 'allocatedResources'],
   emits: ['disciplineChange'],
   computed: {
@@ -144,8 +145,7 @@ export default {
         @valueChange="
           emitChangedDiscipline(discipline.id, $event, discipline.abilities)
         "
-      >
-      </Dots>
+      />
     </div>
 
     <div

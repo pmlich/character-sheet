@@ -10,8 +10,9 @@ import CharacterInfoPortrait from "./CharacterInfoPortrait.vue";
  * emits detected changes upwards to have data fresh for export or potential other work
  */
 export default {
+  components: [CharacterInfoInput, CharacterInfoSelect, CharacterInfoPortrait],
   props: ["bio", "generations"],
-  emits: ["bioChange"]
+  emits: ["bioChange"],
 };
 </script>
 
@@ -41,27 +42,27 @@ export default {
       <CharacterInfoPortrait
         :item="bio.image"
         @char-item-change="$emit('bioChange', [bio.image, $event])"
-      ></CharacterInfoPortrait>
+      />
       <CharacterInfoInput 
         :item="bio.name"
-        @char-item-change="$emit('bioChange', [bio.name, $event])"></CharacterInfoInput>
+        @char-item-change="$emit('bioChange', [bio.name, $event])"/>
     </div>
     <div class="char-info-group">
       <CharacterInfoSelect 
         :item="bio.generation"
-        @char-item-change="$emit('bioChange', [bio.generation, $event])"></CharacterInfoSelect>         
+        @char-item-change="$emit('bioChange', [bio.generation, $event])"/>
       <CharacterInfoSelect 
         :item="bio.clan"
-        @char-item-change="$emit('bioChange', [bio.clan, $event])"></CharacterInfoSelect>
+        @char-item-change="$emit('bioChange', [bio.clan, $event])"/>
       <CharacterInfoInput 
         :item="bio.sire" 
-        @char-item-change="$emit('bioChange', [bio.sire, $event])"></CharacterInfoInput>     
+        @char-item-change="$emit('bioChange', [bio.sire, $event])"/>
       <CharacterInfoSelect 
         :item="bio.faction"
-        @char-item-change="$emit('bioChange', [bio.faction, $event])"></CharacterInfoSelect>
+        @char-item-change="$emit('bioChange', [bio.faction, $event])"/>
       <CharacterInfoSelect 
         :item="bio.predator"
-        @char-item-change="$emit('bioChange', [bio.predator, $event])"></CharacterInfoSelect>
+        @char-item-change="$emit('bioChange', [bio.predator, $event])"/>
 
     </div>
     <div class="clear"></div>

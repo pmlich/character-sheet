@@ -1,18 +1,18 @@
 <script setup>
+
+import Discipline from './Discipline.vue';
+import RestrictionState from './RestrictionState.vue';
+</script>
+
+<script>
 /**
  * Displays entire section of disciplines
  * receives events from child component and check if change is possible in resources
  * if changes are possible, emit event to top component to make changes, otherwise don't
  */
-
-import Discipline from './Discipline.vue';
-import RestrictionState from './RestrictionState.vue';
-import { disciplinesDefinition } from '../data.js';
-</script>
-
-<script>
 export default {
-  props: ['disciplines', 'selectedClan'],
+  components: [Discipline, RestrictionState],
+  props: ['disciplines', 'selectedClan', 'disciplinesDefinition'],
   emits: ['disciplinesChange', 'statHelp'],
   computed: {
     /**
@@ -42,9 +42,7 @@ export default {
       class="resourceCount"
       :allocatedResources="allocatedResources"
       :resourceRestrictions="disciplinesDefinition.resource"
-    >
-    </RestrictionState>
-
+    />
     <Discipline
       v-for="discipline in disciplines"
       :key="discipline"
@@ -53,7 +51,7 @@ export default {
       :clan="selectedClan"
       :allocatedResources="allocatedResources"
       @disciplineChange="$emit('disciplinesChange', disciplines)"
-    ></Discipline>
+    />
   </div>
 </template>
 

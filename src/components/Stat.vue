@@ -1,15 +1,16 @@
 <script setup>
+import Dots from "./Dots.vue";
+</script>
+
+<script>
 /**
  * displays attribute or skill name and uses Dots.vue to display clickable dots enabling to change value
  * after change new value is emitted to parent component to decide if it is alright
  * also we emit statClick to send message to help which attribute was chosen
  */
-import Dots from "./Dots.vue";
-</script>
-
-<script>
 export default {
   name: "stat",
+  components: [Dots],
   props: ["stat", "scale"],
   emits: ["statChange", "statClick"],
   data() {
@@ -33,8 +34,8 @@ export default {
       :initialValue="initialValue"
       :scale="scale"
       @valueChange="$emit('statChange', [stat, $event, stat.value >= $event && $event > initialValue])"
-    >
-    </Dots>
+    />
+    
 
   </div>
 </template>
