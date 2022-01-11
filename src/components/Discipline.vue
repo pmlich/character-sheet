@@ -80,7 +80,7 @@ export default {
       if (newvalue > this.discipline.value) {
         for (; i > this.discipline.value; i--) {
           if (
-            this.allocatedResources[i] < this.disciplinesDefinition.resource[i]
+            this.allocatedResources[i] < disciplinesDefinition.resource[i]
           ) {
             break;
           }
@@ -157,7 +157,7 @@ export default {
       {{ item.level }}
       <select
         class="discipline-ability-select"
-        :disabled="this.discipline.value < item.level ? 1 : 0"
+        :disabled="discipline.value < item.level ? 1 : 0"
         v-model="item.value"
       >
         <option disabled value="">Choose ability</option>
