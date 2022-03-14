@@ -1,5 +1,4 @@
 <script setup>
-
 import Discipline from './Discipline.vue';
 import RestrictionState from './RestrictionState.vue';
 </script>
@@ -12,7 +11,7 @@ import RestrictionState from './RestrictionState.vue';
  */
 export default {
   components: [Discipline, RestrictionState],
-  props: ['disciplines', 'selectedClan', 'disciplinesDefinition'],
+  props: ['disciplines', 'selectedClan', 'disciplinesDefinition', 'predatorDiscipline'],
   emits: ['disciplinesChange', 'statHelp'],
   computed: {
     /**
@@ -51,6 +50,7 @@ export default {
         :disciplines="disciplines"
         :clan="selectedClan"
         :allocatedResources="allocatedResources"
+        :predatorDiscipline="predatorDiscipline"
         @disciplineChange="$emit('disciplinesChange', disciplines)"
       />
       <div class="clearFloat"></div>

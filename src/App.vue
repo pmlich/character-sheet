@@ -15,7 +15,7 @@ import SkillSection from "./components/SkillSection.vue";
 import DisciplineSection from "./components/DisciplineSection.vue";
 import HoverWindow from "./components/HelpWindow.vue";
 import VitalsSideBar from './components/VitalsSideBar.vue';
-import {biography, skillDistributions, attributes, skills, disciplines, disciplinesDefinition, vitals} from "./data.js";
+import {biography, skillDistributions, attributes, skills, disciplines, disciplinesDefinition, predatorDefinitions, vitals} from "./data.js";
 
 export default {
   data() {
@@ -28,6 +28,7 @@ export default {
       attributes: attributes,
       disciplines: disciplines,
       disciplinesDefinition: disciplinesDefinition,
+      predatorDefinitions: predatorDefinitions,
       vitals: vitals,
 
       //local states
@@ -84,8 +85,8 @@ export default {
     this.bindPathToData();
   },
   methods: {
-    setDataValue(event) {
-      event[0].value = event[1];      
+    setData(event, key) {
+      event[0][key] = event[1];      
     },
     /**
      * TODO explain this method, better
@@ -180,18 +181,21 @@ export default {
     :style="{cursor: (help) ? 'help' : null}">
     <character-info 
       :bio="biography" 
-      @bio-change="$event[0].value = $event[1]">
+      :predator-definitions="predatorDefinitions"
+      @bio-change="setData($event, 'value')"
+      @bio-change-list="setData($event, 'list')"
+      >
     </character-info>
     <attribute-section
       :stats="attributes"
-      @stat-section-change="setDataValue($event)"
+      @stat-section-change="setData($event, 'value')"
       @stat-help="handleHelp($event)"
     >
     </attribute-section>
     <skill-section
       :stats="skills"
       :distributions="skillDistributions"
-      @stat-section-change="setDataValue($event)"
+      @stat-section-change="setData($event, 'value')"
       @stat-help="handleHelp($event)"
     >
     </skill-section>
@@ -199,6 +203,7 @@ export default {
       :disciplines="disciplines"
       :selectedClan="biography.clan.value"
       :disciplines-definition="disciplinesDefinition"
+      :predatorDiscipline="biography.predatorDiscipline.value"
       @disciplines-change="disciplines = $event"
       @stat-help="handleHelp($event)"
     >

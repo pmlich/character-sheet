@@ -11,7 +11,7 @@ import Dots from './Dots.vue';
  */
 export default {
   components: [Dots],
-  props: ['discipline', 'disciplines', 'clan', 'allocatedResources'],
+  props: ['discipline', 'disciplines', 'clan', 'allocatedResources', 'predatorDiscipline'],
   emits: ['disciplineChange'],
   computed: {
     /**
@@ -57,6 +57,16 @@ export default {
         )
         .map(({ id }) => id);
     },
+    predatorDisciplineBonus() {
+      /**
+       * compute bonus for predator discipline
+       * @returns {Number}
+       */
+      if (!this.discipline.id | this.discipline.id != this.predatorDiscipline) {
+        return 0
+      }
+      return 1
+    }
   },
   methods: {
     /**
@@ -105,6 +115,15 @@ export default {
         this.$emit('disciplineChange', newdisc);
       }
     },
+    /**
+     * returns 0 if discipline ability select should be enabled
+     * or 1 if not 
+     * depending in itemLevel and discipline value and predator discipline bonus
+     * @param {String} itemLevel - which discipline ability level we are at
+     */
+    isAbilityDisabled(itemLevel) {
+      return this.discipline.value + this.predatorDisciplineBonus < itemLevel ? 1 : 0
+    }
   },
 };
 </script>
@@ -142,6 +161,7 @@ export default {
         :value="discipline.value"
         :initialValue="0"
         :scale="5"
+        :bonus="predatorDisciplineBonus"
         @valueChange="
           emitChangedDiscipline(discipline.id, $event, discipline.abilities)
         "
@@ -157,7 +177,7 @@ export default {
       {{ item.level }}
       <select
         class="discipline-ability-select"
-        :disabled="discipline.value < item.level ? 1 : 0"
+        :disabled="isAbilityDisabled(item.level)"
         v-model="item.value"
       >
         <option disabled value="">Choose ability</option>

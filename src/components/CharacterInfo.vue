@@ -11,8 +11,25 @@ import CharacterInfoPortrait from "./CharacterInfoPortrait.vue";
  */
 export default {
   components: [CharacterInfoInput, CharacterInfoSelect, CharacterInfoPortrait],
-  props: ["bio", "generations"],
-  emits: ["bioChange"],
+  props: ["bio", "predatorDefinitions"],
+  emits: ["bioChange", "bioChangeList"],
+  methods: {
+    /**
+     * @param {String} newPredator is value of new predator type
+     * we generate list of allowed disciplines based on it
+     * we will check if current selected predator discipline is allowed and if not, we'll reset it
+     * also we need to update list of allowed disciplines 
+     */
+    checkPredatorDiscipline(newPredator) {
+      var allowedDisciplines = this.predatorDefinitions.filter(
+        (predator) => predator.id == newPredator
+      )[0].disciplines
+      if (!allowedDisciplines.includes(this.bio.predatorDiscipline.value)) {
+        this.$emit('bioChange', [this.bio.predatorDiscipline, null])
+      }
+      this.$emit('bioChangeList', [this.bio.predatorDiscipline, allowedDisciplines])
+    }
+  }
 };
 </script>
 
@@ -62,8 +79,10 @@ export default {
         @char-item-change="$emit('bioChange', [bio.faction, $event])"/>
       <CharacterInfoSelect 
         :item="bio.predator"
-        @char-item-change="$emit('bioChange', [bio.predator, $event])"/>
-
+        @char-item-change="$emit('bioChange', [bio.predator, $event]); checkPredatorDiscipline($event)"/>
+      <CharacterInfoSelect 
+        :item="bio.predatorDiscipline"
+        @char-item-change="$emit('bioChange', [bio.predatorDiscipline, $event]);"/>
     </div>
     <div class="clearFloat"></div>
   </div>
